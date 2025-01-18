@@ -45,7 +45,26 @@
     </div>
 </nav>
 
+{{--ERROR MESSAGE--}}
+@error('msg')
+<div class="container">
+    <div
+        class="alert alert-danger alert-dismissible fade show mt-4"
+        role="alert"
+    >
+        {{ $message }}
+        <button
+            type="button"
+            class="btn-close"
+            data-bs-dismiss="alert"
+            aria-label="Close"
+        ></button>
+    </div>
+</div>
+@enderror
+
 @yield('content')
 
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

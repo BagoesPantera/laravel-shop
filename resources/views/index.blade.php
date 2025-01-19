@@ -1,36 +1,23 @@
 @extends('layouts.app')
 
 @section('content')
-
     <section id="home-content" class="container mt-5">
-        <div class="container text-center ">
-            <div class="row">
-                <div class="col d-flex flex-column align-items-center w-75">
-
-                    <div class="card w-100" style="width: 18rem;">
-                        <i class="bi bi-box card-img-top" style="font-size: 70px;"></i>
-                        <div class="card-body">
-                            <a href="/about" class="stretched-link">What is AYOTI?</a>
+        @foreach($products->chunk(4) as $chunk)
+            <div class="row mt-3">
+                @foreach($chunk as $product)
+                    <div class="col-md-3">
+                        <div class="card">
+                            <div class="ratio ratio-4x3">
+                                <img src="{{ asset('storage'.$product->image) }}" class="card-img-top" alt="..."/>
+                            </div>
+                            <div class="card-body">
+                                <h5 class="card-title">{{ $product->name }}</h5>
+                                <a href="{{ route('products.show', $product->id) }}" class="btn btn-primary stretched-link">BUY NOW!</a>
+                            </div>
                         </div>
                     </div>
-
-                    <a href="/product" class="btn btn-warning w-100 mt-5">List</a>
-                    <a href="/category" class="btn btn-success w-100 mt-3">Category</a>
-
-                </div>
-                <!-- TENGAH -->
-                <div class="col d-flex flex-column align-items-center">
-                    <p>MicroController</p>
-
-                </div>
-                <!-- KANAN -->
-                <div class="col d-flex flex-column  align-items-center">
-                    <p>Sensor</p>
-
-                </div>
-
-
+                @endforeach
             </div>
-        </div>
+        @endforeach
     </section>
 @endsection

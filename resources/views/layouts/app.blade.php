@@ -23,24 +23,22 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav" style="margin-left: auto !important;">
                 <li class="nav-item">
-                    <a class="nav-link" aria-current="page" href="/product">List</a>
-                </li>
-
-                <li class="nav-item">
-                    <a class="nav-link" href="/category">Category</a>
-                </li>
-
-                <li class="nav-item">
                     <a class="nav-link" href="{{ route('about') }}">About</a>
                 </li>
 
-
-                <li class="nav-item">
-                    <form method="post" action="{{ route('logout') }}">
-                        @csrf
-                        <button type="submit" class="btn nav-link">Logout</button>
-                    </form>
-                </li>
+                @if(auth()->check())
+                    <li class="nav-item">
+                        <a class="nav-link" aria-current="page" href="{{ route('products.index') }}">Products</a>
+                    </li><li class="nav-item">
+                        <a class="nav-link" href="{{ route('categories.index') }}">Categories</a>
+                    </li>
+                    <li class="nav-item">
+                        <form method="post" action="{{ route('logout') }}">
+                            @csrf
+                            <button type="submit" class="btn nav-link">Logout</button>
+                        </form>
+                    </li>
+                @endif
             </ul>
         </div>
     </div>

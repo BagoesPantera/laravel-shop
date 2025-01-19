@@ -12,7 +12,7 @@
                             </div>
                             <div class="card-body">
                                 <h5 class="card-title">{{ $product->name }}</h5>
-                                <a href="{{ route('products.show', $product->id) }}" class="btn btn-primary stretched-link">BUY NOW!</a>
+                                <a href="{{ route('products.show', $product->id) }}" class="btn btn-primary stretched-link">Detail</a>
                             </div>
                         </div>
                     </div>

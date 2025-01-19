@@ -13,7 +13,7 @@
 <body>
 <nav class="navbar navbar-expand-lg bg-primary" data-bs-theme="dark">
     <div class="container-fluid">
-        <a class="navbar-brand" href="/"><i class="bi bi-box"></i> AYOTI</a>
+        <a class="navbar-brand" href="{{ route('home') }}"><i class="bi bi-box"></i> AYOTI</a>
 
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
                 aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -31,7 +31,7 @@
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link" href="/about">About</a>
+                    <a class="nav-link" href="{{ route('about') }}">About</a>
                 </li>
 
 

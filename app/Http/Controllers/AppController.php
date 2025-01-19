@@ -11,4 +11,8 @@ class AppController extends Controller
         $products = Product::all();
         return view('index', compact('products'));
     }
+
+    public function about(){
+        return view('about');
+    }
 }

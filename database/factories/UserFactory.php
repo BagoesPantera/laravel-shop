@@ -2,43 +2,56 @@
 
 namespace Database\Factories;
 
+use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\User>
+ * Factory untuk menghasilkan data palsu (dummy) untuk model User.
+ *
+ * @extends Factory<User>
  */
 class UserFactory extends Factory
 {
     /**
-     * The current password being used by the factory.
+     * Menyimpan password yang digunakan dalam factory ini.
+     *
+     * @var string|null
      */
     protected static ?string $password;
 
     /**
-     * Define the model's default state.
+     * Menentukan keadaan default model User.
      *
-     * @return array<string, mixed>
+     * Ini digunakan untuk mendefinisikan data palsu yang akan digunakan
+     * untuk membuat instance model User ketika menjalankan factory.
+     *
+     * @return array<string, mixed> Data default untuk model User.
      */
     public function definition(): array
     {
         return [
-            'username' => fake()->name(),
-            'password' => static::$password ??= Hash::make('password'),
-            'remember_token' => Str::random(10),
-            'created_at' => now(),
-            'updated_at' => now(),
+            'username' => fake()->name(), // Menetapkan username dengan nama acak.
+            'password' => static::$password ??= Hash::make('password'), // Menetapkan password, jika belum ada, menggunakan hash default.
+            'remember_token' => Str::random(10), // Menetapkan token random untuk 'remember_token'.
+            'created_at' => now(), // Menetapkan waktu pembuatan.
+            'updated_at' => now(), // Menetapkan waktu pembaruan.
         ];
     }
 
     /**
-     * Indicate that the model's email address should be unverified.
+     * Menandakan bahwa alamat email model User tidak diverifikasi.
+     *
+     * Fungsi ini digunakan untuk menetapkan nilai null pada kolom
+     * 'email_verified_at' sehingga email pengguna dianggap belum diverifikasi.
+     *
+     * @return static Instance factory yang telah dimodifikasi.
      */
     public function unverified(): static
     {
         return $this->state(fn (array $attributes) => [
-            'email_verified_at' => null,
+            'email_verified_at' => null, // Setel 'email_verified_at' menjadi null.
         ]);
     }
 }

@@ -2,9 +2,8 @@
 
 namespace Database\Seeders;
 
-use App\Models\Category;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
-use Illuminate\Database\Seeder;
+use App\Models\Category; // Hanya import Category yang digunakan
+use Illuminate\Database\Seeder; // Import Seeder untuk mendefinisikan class seeder
 
 class CategorySeeder extends Seeder
 {
@@ -13,6 +12,7 @@ class CategorySeeder extends Seeder
      */
     public function run(): void
     {
+        // Membuat 10 data kategori menggunakan factory
         Category::factory()->count(10)->create();
     }
 }

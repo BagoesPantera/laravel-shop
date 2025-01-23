@@ -2,10 +2,10 @@
 
 namespace Database\Seeders;
 
-use Carbon\Carbon;
-use Illuminate\Database\Seeder;
-use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Hash;
+use Carbon\Carbon; // Digunakan untuk mendapatkan waktu saat ini
+use Illuminate\Database\Seeder; // Digunakan untuk mendefinisikan class seeder
+use Illuminate\Support\Facades\DB; // Digunakan untuk mengakses query builder
+use Illuminate\Support\Facades\Hash; // Digunakan untuk mengenkripsi password
 
 class UserSeeder extends Seeder
 {
@@ -14,11 +14,12 @@ class UserSeeder extends Seeder
      */
     public function run(): void
     {
+        // Menyisipkan data pengguna ke dalam tabel 'users'
         DB::table('users')->insert([[
-            'username' => 'owner',
-            'password' => Hash::make('123'),
-            'created_at' => Carbon::now(),
-            'updated_at' => Carbon::now()
+            'username' => 'owner', // Username pengguna
+            'password' => Hash::make('123'), // Enkripsi password menggunakan Hash
+            'created_at' => Carbon::now(), // Waktu pembuatan data
+            'updated_at' => Carbon::now()  // Waktu pembaruan data
         ]]);
     }
 }

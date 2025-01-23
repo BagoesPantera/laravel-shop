@@ -2,65 +2,104 @@
 
 namespace App\Policies;
 
-use App\Models\Product;
-use App\Models\User;
-use Illuminate\Auth\Access\Response;
+use App\Models\Product; // Mengimpor model Product yang akan diproteksi dengan kebijakan ini
+use App\Models\User; // Mengimpor model User yang terkait dengan kebijakan akses
 
 class ProductPolicy
 {
     /**
-     * Determine whether the user can view any models.
+     * Menentukan apakah pengguna dapat melihat semua produk.
+     *
+     * Di sini, selalu mengembalikan `true`, yang berarti semua pengguna dapat melihat daftar produk.
+     *
+     * @param User $user
+     * @return bool
      */
     public function viewAny(User $user): bool
     {
-        return true;
+        return true; // Semua pengguna dapat melihat daftar produk
     }
 
     /**
-     * Determine whether the user can view the model.
+     * Menentukan apakah pengguna dapat melihat produk tertentu.
+     *
+     * Di sini, selalu mengembalikan `true`, yang berarti semua pengguna dapat melihat produk apa pun.
+     *
+     * @param User $user
+     * @param Product $product
+     * @return bool
      */
     public function view(User $user, Product $product): bool
     {
-        return true;
+        return true; // Semua pengguna dapat melihat produk tertentu
     }
 
     /**
-     * Determine whether the user can create models.
+     * Menentukan apakah pengguna dapat membuat produk baru.
+     *
+     * Hanya pengguna yang terautentikasi (login) yang dapat membuat produk.
+     *
+     * @param User $user
+     * @return bool
      */
     public function create(User $user): bool
     {
-        return auth()->check();
+        return auth()->check(); // Hanya pengguna yang terautentikasi yang dapat membuat produk
     }
 
     /**
-     * Determine whether the user can update the model.
+     * Menentukan apakah pengguna dapat memperbarui produk.
+     *
+     * Hanya pengguna yang terautentikasi (login) yang dapat memperbarui produk.
+     *
+     * @param User $user
+     * @param Product $product
+     * @return bool
      */
     public function update(User $user, Product $product): bool
     {
-        return auth()->check();
+        return auth()->check(); // Hanya pengguna yang terautentikasi yang dapat memperbarui produk
     }
 
     /**
-     * Determine whether the user can delete the model.
+     * Menentukan apakah pengguna dapat menghapus produk.
+     *
+     * Hanya pengguna yang terautentikasi (login) yang dapat menghapus produk.
+     *
+     * @param User $user
+     * @param Product $product
+     * @return bool
      */
     public function delete(User $user, Product $product): bool
     {
-        return auth()->check();
+        return auth()->check(); // Hanya pengguna yang terautentikasi yang dapat menghapus produk
     }
 
     /**
-     * Determine whether the user can restore the model.
+     * Menentukan apakah pengguna dapat memulihkan produk yang dihapus.
+     *
+     * Hanya pengguna yang terautentikasi (login) yang dapat memulihkan produk.
+     *
+     * @param User $user
+     * @param Product $product
+     * @return bool
      */
     public function restore(User $user, Product $product): bool
     {
-        return auth()->check();
+        return auth()->check(); // Hanya pengguna yang terautentikasi yang dapat memulihkan produk
     }
 
     /**
-     * Determine whether the user can permanently delete the model.
+     * Menentukan apakah pengguna dapat menghapus produk secara permanen.
+     *
+     * Hanya pengguna yang terautentikasi (login) yang dapat menghapus produk secara permanen.
+     *
+     * @param User $user
+     * @param Product $product
+     * @return bool
      */
     public function forceDelete(User $user, Product $product): bool
     {
-        return auth()->check();
+        return auth()->check(); // Hanya pengguna yang terautentikasi yang dapat menghapus produk secara permanen
     }
 }

@@ -2,9 +2,8 @@
 
 namespace Database\Seeders;
 
-use App\Models\Product;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
-use Illuminate\Database\Seeder;
+use App\Models\Product; // Hanya import Product yang digunakan
+use Illuminate\Database\Seeder; // Import Seeder untuk mendefinisikan class seeder
 
 class ProductSeeder extends Seeder
 {
@@ -13,6 +12,7 @@ class ProductSeeder extends Seeder
      */
     public function run(): void
     {
+        // Membuat 10 data produk menggunakan factory
         Product::factory()->count(10)->create();
     }
 }

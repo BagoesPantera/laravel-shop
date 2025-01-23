@@ -2,15 +2,20 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
+use Database\Factories\CategoryFactory; // Mengimpor CategoryFactory untuk pembuatan data dummy kategori (factory)
+use Illuminate\Database\Eloquent\Factories\HasFactory; // Mengimpor HasFactory untuk penggunaan factory
+use Illuminate\Database\Eloquent\Model; // Mengimpor Model sebagai kelas dasar untuk model Eloquent
 
 class Category extends Model
 {
-    /** @use HasFactory<\Database\Factories\CategoryFactory> */
+    /**
+     * Menggunakan HasFactory untuk memungkinkan pembuatan data dummy kategori menggunakan factory.
+     * @use HasFactory<CategoryFactory>
+     */
     use HasFactory;
 
+    // Menentukan atribut yang dapat diisi secara massal melalui create() atau update()
     protected $fillable = [
-        'name',
+        'name', // Hanya kolom 'name' yang dapat diisi secara massal
     ];
 }

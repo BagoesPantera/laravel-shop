@@ -2,10 +2,11 @@
 
 namespace Database\Factories;
 
-use Illuminate\Database\Eloquent\Factories\Factory;
+use App\Models\Category; // Mengimpor model Category
+use Illuminate\Database\Eloquent\Factories\Factory; // Mengimpor class Factory untuk membuat factory
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Category>
+ * @extends Factory<Category>
  */
 class CategoryFactory extends Factory
 {
@@ -16,10 +17,11 @@ class CategoryFactory extends Factory
      */
     public function definition(): array
     {
+        // Mengembalikan array yang berisi data default untuk model Category
         return [
-            'name' => fake()->name(),
-            'created_at' => now(),
-            'updated_at' => now(),
+            'name' => fake()->name(), // Menggunakan Faker untuk menghasilkan nama acak
+            'created_at' => now(),    // Menetapkan waktu saat ini untuk created_at
+            'updated_at' => now(),    // Menetapkan waktu saat ini untuk updated_at
         ];
     }
 }

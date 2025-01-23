@@ -17,13 +17,19 @@ class ProductFactory extends Factory
      */
     public function definition(): array
     {
+        $image = UploadedFile::fake()->image('oldimage.jpg', 600, 600);
+
+        // Menyimpan file di disk 'public/images', pastikan nama file sesuai
+        $imageName = $image->hashName();
+        $image->storeAs('images', $imageName);
+
         return [
             'category_id' => $this->faker->numberBetween(1, 10),
             'name' => $this->faker->name(),
             'description' => $this->faker->text(),
             'price' => $this->faker->randomFloat(2, 10),
             'qty' => $this->faker->numberBetween(1, 10),
-            'image' => UploadedFile::fake()->image('image.jpg'),
+            'image' =>'/images/' . $imageName,
         ];
     }
 }

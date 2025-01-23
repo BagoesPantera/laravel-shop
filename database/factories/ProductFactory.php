@@ -23,7 +23,7 @@ class ProductFactory extends Factory
             'description' => $this->faker->text(),
             'price' => $this->faker->randomFloat(2, 10),
             'qty' => $this->faker->numberBetween(1, 10),
-            'image' => UploadedFile::fake()->image('/image/image.jpg'),
+            'image' => UploadedFile::fake()->image('image.jpg'),
         ];
     }
 }
